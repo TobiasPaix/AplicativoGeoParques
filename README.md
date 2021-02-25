@@ -35,8 +35,8 @@ Conselhos para resolver problemas comuns.
 Inspiração, códigos, etc.
 * Escape Unity Animator Hell! -- https://www.youtube.com/watch?v=nBkiSJ5z-hE
 * What Are Events? -- https://www.youtube.com/watch?v=OuZrhykVytg
-* Breaking Up Code in Unity -- https://www.youtube.com/watch?v=\_vj1GASSO9U
-* HtACiU3D Two Dimensional Blend Trees -- https://www.youtube.com/watch?v=\_J8RPIaO2Lc
+* Breaking Up Code in Unity -- https://www.youtube.com/watch?v=_vj1GASSO9U
+* HtACiU3D Two Dimensional Blend Trees -- https://www.youtube.com/watch?v=_J8RPIaO2Lc
 * HtACiU3D Animation Retargeting Explained -- https://www.youtube.com/watch?v=BEZHVYk6Fa4
 * Exporting FBX from Blender to Unity -- https://www.youtube.com/watch?v=ysl0qYq5p9w
 * Animation Tutorial Blender -- https://www.youtube.com/watch?v=GM1Fc-NTDsg

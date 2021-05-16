@@ -5,6 +5,7 @@ using GoogleARCore;
 
 public class DetectedPlaneVisualizerGeo : MonoBehaviour
 {
+        public static int detectedPlaneCount;
         private DetectedPlane _detectedPlane;
 
         // Keep previous frame's mesh polygon to avoid mesh update every frame.
@@ -64,6 +65,8 @@ public class DetectedPlaneVisualizerGeo : MonoBehaviour
             _meshRenderer.material.SetColor("_GridColor", Color.clear);
             _meshRenderer.material.SetFloat("_UvRotation", Random.Range(0.0f, 360.0f));
 
+            detectedPlaneCount++;
+
             Update();
         }
 
@@ -117,7 +120,7 @@ public class DetectedPlaneVisualizerGeo : MonoBehaviour
             // Fill transparent color to vertices 0 to 3.
             for (int i = 0; i < planePolygonCount; ++i)
             {
-                _meshColors.Add(Color.clear);
+                _meshColors.Add(Color.black);
             }
 
             // Feather distance 0.2 meters.

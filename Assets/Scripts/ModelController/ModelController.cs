@@ -100,8 +100,9 @@ public class ModelController : MonoBehaviour
     ********************************************************************************************/
     public void RestartButtonSettings(){
         if(modelInstance == null){
-            scController.doActionButton.gameObject.SetActive(false);
-            scController.fixedJoystick.gameObject.SetActive(false);
+            scController.Canvas.transform.GetChild(0).gameObject.SetActive(false);
+            scController.Canvas.transform.GetChild(3).gameObject.SetActive(false);
+
             return;
         }
         else{

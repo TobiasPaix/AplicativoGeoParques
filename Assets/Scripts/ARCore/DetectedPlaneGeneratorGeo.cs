@@ -44,11 +44,6 @@ public class DetectedPlaneGeneratorGeo : MonoBehaviour
             
             // _placeholderPlanes[i] = planeObject;
             planeObject.GetComponent<DetectedPlaneVisualizerGeo>().Initialize(_newPlanes[i]);
-
-            if(modelControllerDetec.modelInstance != null){
-                planeObject.GetComponent<DetectedPlaneVisualizerGeo>().HideMesh();
-            }
-
         }
     
     }

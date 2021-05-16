@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneMovementJoystick.unity
     guid: 189b7b9e9b9d85d41981c6b14b75cf29
+  - enabled: 1
+    path: Assets/Scenes/SceneWithAugmentedImage.unity
+    guid: 117e99415328c5b49863fdcfa28ef8b5
   m_configObjects: {}

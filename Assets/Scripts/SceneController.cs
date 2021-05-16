@@ -37,15 +37,10 @@ public class SceneController : MonoBehaviour
     public Camera FirstPersonCamera;
 
     public ModelController modelController;
-
-    public Button doActionButton;
-    public FixedJoystick fixedJoystick;
     public GameObject arCoreDevice;
+    public GameObject Canvas;
 
     public Text debugText;
-
-    private ARCoreSession arSession;
-    private ARCoreSessionConfig arSConfig;
   
   
     // Update is called once per frame
@@ -67,10 +62,10 @@ public class SceneController : MonoBehaviour
         bool foundHit = false;
         TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
 
-        foundHit = Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit);
+        foundHit = Frame.Raycast(Screen.width/2, Screen.height/2, raycastFilter, out hit);
     
 
-        // Se achamos um plano, podemos colocar o prefab no mundo.
+        // Se achamos um plano e o raycast conectou, podemos colocar o prefab no mundo.
         if (foundHit){
 
             // Com a pose do acerto e da câmera, verificamos se o acerto
@@ -86,13 +81,15 @@ public class SceneController : MonoBehaviour
                 SetTrackableHit(hit);
                 TrackableHit hitFromScreen;
                 Frame.Raycast(Screen.width/2, Screen.height/2, raycastFilter, out hitFromScreen);
-                // debugText.text = arSConfig.ToString();
-                doActionButton.gameObject.SetActive(true);
-                fixedJoystick.gameObject.SetActive(true);
+                // Tornar ativo o Joystick (índice 0) e o botão de ação (índice 3).
+                Canvas.transform.GetChild(0).gameObject.SetActive(true);
+                Canvas.transform.GetChild(3).gameObject.SetActive(true);
             }
         }
 
-        
+        if(Session.Status == SessionStatus.Tracking){
+            debugText.text = DetectedPlaneVisualizerGeo.detectedPlaneCount.ToString();
+        }
     }
 
     public void Awake(){
@@ -101,6 +98,19 @@ public class SceneController : MonoBehaviour
 
     void SetTrackableHit(TrackableHit trackableHit){
         modelController.SetTrackableHit(trackableHit);
+    }
 
+    void TurnOffPlane(){
+        var foundVisualizerPlaneObject = FindObjectsOfType<DetectedPlaneVisualizerGeo>(true);
+        foreach(DetectedPlaneVisualizerGeo detPlane in foundVisualizerPlaneObject){
+            Destroy(detPlane);
+        }
+    }
+
+    void TurnOnPlane(){
+        var foundVisualizerPlaneObject = FindObjectsOfType<DetectedPlaneVisualizerGeo>(true);
+        foreach(DetectedPlaneVisualizerGeo detPlane in foundVisualizerPlaneObject){
+            detPlane.GetComponent<Renderer>().enabled = true;
+        }
     }
 }
